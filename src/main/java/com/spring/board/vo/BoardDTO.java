@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 public class BoardDTO {
 
-    private int idx;
+    private Long idx;
     private String bdTitle;
     private String bdContent;
     private String bdWriter;

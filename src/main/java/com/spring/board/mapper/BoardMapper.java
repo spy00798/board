@@ -12,7 +12,7 @@ public interface BoardMapper {
 
     public int insertBoard(BoardDTO params);
 
-    public BoardDTO selectBoardDertail(long idx);
+    public BoardDTO selectBoardDetail(long idx);
 
     public int updateBoard(BoardDTO params);
 

@@ -23,4 +23,11 @@ public class BoardServiceImpl implements BoardService{
 
             return (queryResult == 1) ? true:false;
     }
+
+    @Override
+    public BoardDTO getBoardDetail(Long idx) {
+        int queryResult = 0;
+
+        return boardMapper.selectBoardDetail(idx);
+    }
 }

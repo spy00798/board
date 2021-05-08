@@ -18,7 +18,6 @@ public class MapperTests {
         params.setBdTitle("1번 게시글 제목");
         params.setBdContent("1번 게시글 내용");
         params.setBdWriter("테스터");
-        params.setBdDate("20210505");
 
         int result = boardMapper.insertBoard(params);
         System.out.println("결과는" + result + "입니다.");

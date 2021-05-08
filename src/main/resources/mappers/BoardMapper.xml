@@ -17,6 +17,33 @@
                 #{bdTitle},
                 #{bdContent},
                 #{bdWriter},
-                #{bdDate} )
+                NOW() )
     </insert>
+    <select id="selectBoardDetail" parameterType="long" resultType="BoardDTO">
+        SELECT
+                <include refid="boardColumns"></include>
+        FROM
+                board_tbl_01
+        WHERE
+                idx = #{idx}
+    </select>
+
+    <update id="updateBoard" parameterType="BoardDTO">
+        UPDATE board_tbl_01
+        SET
+                bd_title = #{bdTitle},
+                bd_content = #{bdContent},
+                bd_writer = #{bdWriter}
+        WHERE
+                idx = #{idx}
+    </update>
+    <select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
+        SELECT
+                <include refid="boardColumns"></include>
+        FROM
+                board_tbl_01
+        ORDER BY
+                idx DESC,
+                bd_date DESC
+    </select>
 </mapper>

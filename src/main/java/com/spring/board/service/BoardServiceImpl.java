@@ -5,6 +5,9 @@ import com.spring.board.vo.BoardDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+
 @Service
 public class BoardServiceImpl implements BoardService{
 
@@ -29,5 +32,31 @@ public class BoardServiceImpl implements BoardService{
         int queryResult = 0;
 
         return boardMapper.selectBoardDetail(idx);
+    }
+
+    @Override
+    public boolean deleteBoard(Long idx) {
+        int queryResult = 0;
+
+        BoardDTO board = boardMapper.selectBoardDetail(idx);
+
+        if(board != null && "N".equals(board.getDeleteyn())) {
+                queryResult = boardMapper.deleteBoard(idx);
+        }
+
+        return (queryResult == 1) ? true:false;
+    }
+
+    @Override
+    public List<BoardDTO> getBoardList() {
+        List<BoardDTO> boardList = Collections.emptyList();
+
+        int boardTotalCount = boardMapper.selectBoardTotalCount();
+
+        if (boardTotalCount > 0) {
+                    boardList = boardMapper.selectBoardList();
+        }
+
+        return boardList;
     }
 }

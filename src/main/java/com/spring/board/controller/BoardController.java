@@ -11,4 +11,9 @@ public class BoardController {
     public String main() {
         return "index";
     }
+
+    @RequestMapping("/board/insert")
+    public String boardInsert() {
+        return "board/insert";
+    }
 }

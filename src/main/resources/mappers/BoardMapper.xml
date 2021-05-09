@@ -6,7 +6,8 @@
         bd_title,
         bd_content,
         bd_writer,
-        bd_date
+        bd_date,
+        delete_yn
     </sql>
 
     <insert id="insertBoard" parameterType="com.spring.board.vo.BoardDTO">
@@ -17,7 +18,9 @@
                 #{bdTitle},
                 #{bdContent},
                 #{bdWriter},
-                NOW() )
+                NOW(),
+                'N'
+                )
     </insert>
     <select id="selectBoardDetail" parameterType="long" resultType="BoardDTO">
         SELECT
@@ -37,6 +40,13 @@
         WHERE
                 idx = #{idx}
     </update>
+    <update id="deleteBoard" parameterType="BoardDTO">
+        UPDATE board_tbl_01
+        SET
+                delete_yn = 'Y'
+        WHERE
+                idx = #{idx}
+    </update>
     <select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
         SELECT
                 <include refid="boardColumns"></include>
@@ -45,5 +55,13 @@
         ORDER BY
                 idx DESC,
                 bd_date DESC
+    </select>
+    <select id="selectBoardTotalCount" parameterType="BoardDTO">
+        SELECT
+                COUNT(*)
+        FROM
+                board_tbl_01
+        WHERE
+                delete_yn = 'N'
     </select>
 </mapper>

@@ -40,7 +40,7 @@ public class BoardServiceImpl implements BoardService{
 
         BoardDTO board = boardMapper.selectBoardDetail(idx);
 
-        if(board != null && "N".equals(board.getDeleteyn())) {
+        if(board != null && "N".equals(board.getDeleteYn())) {
                 queryResult = boardMapper.deleteBoard(idx);
         }
 

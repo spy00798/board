@@ -2,10 +2,11 @@ create database kjh_test;
 use kjh_test;
 
 create table board_tbl_01(
-    idx int(10)primary key auto_increment,
-    bd_title varchar(20)not null,
-    bd_content varchar(1000)not null,
-    bd_writer varchar(20),
-    bd_date date
+                             idx int(10)primary key auto_increment,
+                             bd_title varchar(20)not null,
+                             bd_content varchar(1000)not null,
+                             bd_writer varchar(20),
+                             bd_date datetime default NOW(),
+                             delete_yn ENUM('Y', 'N') default 'N'
 
 );

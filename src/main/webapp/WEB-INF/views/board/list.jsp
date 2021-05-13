@@ -21,12 +21,12 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $("#writeBtn").click(function(){
-                location.href ="write";
+                location.href ="insert";
             })
-            $.ajax({url: "boardList", success: function(result){
+            $.ajax({url: "boardlist", success: function(result){
                     var html = "";
                     result.forEach(function(item){
-                        html+= "<tr> <td><a href = 'view?idx=" + item.idx + "'>" + item.title + "</a>"
+                        html+= "<tr> <td><a href = 'view?idx=" + item.idx + "'>" + item.bdTitle + " | "+ item.bdWriter + " | " + item.bdDate.substring(0, 10) + "</a>"
                     })
                     $("#listArea").append(html)
                     $('#example').DataTable();
@@ -48,10 +48,10 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="index">홈</a>
+                <a class="nav-link" href="../index">홈</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="board">게시판</a>
+                <a class="nav-link" href="list">게시판</a>
             </li>
         </ul>
     </div>

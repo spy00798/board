@@ -13,14 +13,16 @@
 
     <insert id="insertBoard" parameterType="com.spring.board.vo.BoardDTO">
         INSERT INTO board_tbl_01 (
-            <include refid="boardColumns" />
+            bd_title,
+            bd_content,
+            bd_writer
         ) VALUES (
-                #{idx},
                 #{bdTitle},
                 #{bdContent},
                 #{bdWriter},
                 NOW(),
-                'N'
+                'N',
+                #{bdImage}
                 )
     </insert>
     <select id="selectBoardDetail" parameterType="long" resultType="BoardDTO">
@@ -37,7 +39,8 @@
         SET
                 bd_title = #{bdTitle},
                 bd_content = #{bdContent},
-                bd_writer = #{bdWriter}
+                bd_writer = #{bdWriter},
+                bd_image = #{bdImage}
         WHERE
                 idx = #{idx}
     </update>
@@ -48,11 +51,13 @@
         WHERE
                 idx = #{idx}
     </update>
-    <select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
+    <select id="selectBoardList" resultType="BoardDTO">
         SELECT
-                <include refid="boardColumns"></include>
+            <include refid="boardColumns"></include>
         FROM
                 board_tbl_01
+        WHERE
+                delete_yn = 'N'
         ORDER BY
                 idx DESC,
                 bd_date DESC

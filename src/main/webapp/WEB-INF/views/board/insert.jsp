@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-URL=https://coding-factory.tistory.com/625
+
 </body>
 </html>

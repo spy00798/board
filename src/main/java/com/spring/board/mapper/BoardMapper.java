@@ -20,5 +20,4 @@ public interface BoardMapper {
 
     public List<BoardDTO> selectBoardList();
 
-    public int selectBoardTotalCount();
 }

@@ -12,5 +12,6 @@ public class BoardDTO {
     private String bdWriter;
     private String bdDate;
     private String deleteYn;
+    private String bdImage;
 
 }

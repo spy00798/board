@@ -7,7 +7,8 @@
         bd_content,
         bd_writer,
         bd_date,
-        delete_yn
+        delete_yn,
+        bd_image
     </sql>
 
     <insert id="insertBoard" parameterType="com.spring.board.vo.BoardDTO">
@@ -55,13 +56,5 @@
         ORDER BY
                 idx DESC,
                 bd_date DESC
-    </select>
-    <select id="selectBoardTotalCount" parameterType="BoardDTO">
-        SELECT
-                COUNT(*)
-        FROM
-                board_tbl_01
-        WHERE
-                delete_yn = 'N'
     </select>
 </mapper>
